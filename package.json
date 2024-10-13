@@ -7,7 +7,7 @@
   },
   "type": "module",
   "scripts": {
-    "manager:run": "node src/main.js"
+    "start": "node src/main.js"
   },
   "author": "",
   "license": "ISC"
