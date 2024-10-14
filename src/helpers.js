@@ -1,7 +1,10 @@
-import { printCurrentDir } from "./modules/index.js";
+import { printCurrentDir } from './modules/index.js';
+import { MESSAGES } from './constants.js';
 
 export const beforeStart = (name) => {
-  console.log(`Welcome to the File Manager, ${name}!`);
+  console.log(`${MESSAGES.WelcomeMessage}, ${name}!`);
+
   printCurrentDir();
-  console.log('Enter your command below:');
+
+  console.log(MESSAGES.EnterMessage);
 }

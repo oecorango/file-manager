@@ -1,12 +1,13 @@
 import os from 'os';
+import { OS_COMMANDS } from "./constants.js";
 
 function getSysInfo(command) {
   switch (command) {
-    case '--EOL':
+    case OS_COMMANDS.EndOfLine:
       console.log(`System End-Of-Line (EOL): ${JSON.stringify(os.EOL)}`);
       break;
 
-    case '--cpus':
+    case OS_COMMANDS.Cpus:
       const cpus = os.cpus();
       console.log(`Overall amount of CPUs: ${cpus.length}`);
       cpus.forEach((cpu, index) => {
@@ -14,16 +15,16 @@ function getSysInfo(command) {
       });
       break;
 
-    case '--homedir':
+    case OS_COMMANDS.HomeDir:
       console.log(`Home Directory: ${os.homedir()}`);
       break;
 
-    case '--username':
+    case OS_COMMANDS.UserName:
       const userInfo = os.userInfo();
       console.log(`Current system user name: ${userInfo.username}`);
       break;
 
-    case '--architecture':
+    case OS_COMMANDS.Arh:
       console.log(`CPU Architecture: ${os.arch()}`);
       break;
 

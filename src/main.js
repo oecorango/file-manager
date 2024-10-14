@@ -16,8 +16,12 @@ import {
   deleteFile,
   readFile,
 } from './modules/filesOperation/index.js'
+import {
+  compressFile,
+  decompressFile
+} from './modules/zip/index.js'
 import { COMMANDS, MESSAGES, PATH_TO_UP } from './constants.js';
-import { beforeStart } from "./helpers.js";
+import { beforeStart } from './helpers.js';
 
 const homeDir = homedir();
 process.chdir(homeDir);
@@ -28,36 +32,59 @@ const executeCommand = async (command, ...params) => {
       case COMMANDS.List:
         await listDir();
         break;
+
       case COMMANDS.ChangeDir:
         changeDir(params[0]);
         break;
+
       case COMMANDS.UpFolder:
         changeDir(PATH_TO_UP);
         break;
+
       case COMMANDS.Read:
         await readFile(params[0]);
         break;
+
       case COMMANDS.Create:
         await createFile(params[0], params[1]);
         break;
+
       case COMMANDS.Rename:
         await renameFile(params[0], params[1]);
         break;
+
       case COMMANDS.Copy:
         await copyFile(params[0], params[1]);
         break;
+
       case COMMANDS.Move:
         await moveFile(params[0], params[1]);
         break;
+
       case COMMANDS.Delete:
         await deleteFile(params[0]);
         break;
+
       case COMMANDS.Info:
         getSysInfo(params[0]);
         break;
+
+      case COMMANDS.Hash:
+        await calculateHash(params[0]);
+        break;
+
+      case COMMANDS.Compress:
+        await compressFile(params[0]);
+        break;
+
+      case COMMANDS.Decompress:
+        await decompressFile(params[0]);
+        break;
+
       case COMMANDS.Exit:
         handleExit(userName);
         break;
+
       default:
         console.log(MESSAGES.InvalidInput);
     }
